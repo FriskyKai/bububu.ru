@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Web;
 
-use App\Http\Requests\Api\ApiRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
@@ -22,7 +21,8 @@ class CategoryRequest extends FormRequest
     }
 
     // Кастомные сообщения об ошибках валидации
-    public function messages(): array {
+    public function messages(): array
+    {
         return [
             'name.min' => 'Название категории не должно быть пустым',
             'name.max' => 'Название категории не должно превышать 64 символа',

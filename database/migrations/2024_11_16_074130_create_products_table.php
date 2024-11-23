@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('price', 18, 2);
             $table->integer('quantity');
-            $table->integer('discount')->nullable();
+            $table->integer('discount');
             $table->foreignId('category_id')->constrained('categories', 'id');
             $table->timestamps();
         });

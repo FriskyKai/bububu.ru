@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -10,5 +9,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 
-// Маршруты для категорий
-Route::apiResource('categories', CategoryController::class);
+use \App\Http\Controllers\Api\CategoryController;
+Route::middleware('auth:api')->apiResource('categories', CategoryController::class)->except(['index', 'show']);
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');

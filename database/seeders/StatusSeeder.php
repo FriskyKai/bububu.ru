@@ -15,31 +15,32 @@ class StatusSeeder extends Seeder
     {
         Status::create([
             'name' => 'Новый заказ',
-            'code' => 'new',
+            'code' => 'new'
         ]);
         Status::create([
             'name' => 'В сборке',
-            'code' => 'assembled',
+            'code' => 'assembled'
         ]);
         Status::create([
-            'name' => 'Передаётся в доставку',
-            'code' => 'transmitted',
+            'name' => 'Передается в доставку',
+            'code' => 'transmitted'
         ]);
         Status::create([
             'name' => 'В пути',
-            'code' => 'way',
+            'code' => 'way'
         ]);
         Status::create([
             'name' => 'Доставлено',
-            'code' => 'delivered',
+            'code' => 'delivered'
         ]);
         Status::create([
             'name' => 'Получено',
-            'code' => 'received',
+            'code' => 'received'
         ]);
         Status::create([
-            'name' => 'Отменён',
-            'code' => 'canceled',
+            'name' => 'Отменен',
+            'code' => 'canceled'
         ]);
+
     }
 }

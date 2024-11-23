@@ -19,7 +19,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Связь с моделью Category M:1
+    // Связь с моделью Status M:1
     public function status() {
         return $this->belongsTo(Status::class);
     }
@@ -28,4 +28,5 @@ class Order extends Model
     public function items() {
         return $this->hasMany(Item::class);
     }
+
 }

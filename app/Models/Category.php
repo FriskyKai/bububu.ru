@@ -11,8 +11,8 @@ class Category extends Model
         'name',
     ];
 
-    // Связь с моделью Product M:1
-    public function products()  {
+    // Связь с моделью Product 1:M
+    public function products() {
         return $this->hasMany(Product::class);
     }
 }

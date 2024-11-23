@@ -44,12 +44,12 @@ class User extends Authenticatable
     }
 
     // Связь с моделью Role M:1
-    public function role() {
+    public function role()  {
         return $this->belongsTo(Role::class);
     }
 
     // Связь с моделью Address 1:M
-    public function addresses() {
+    public function addresses()  {
         return $this->hasMany(Address::class);
     }
 

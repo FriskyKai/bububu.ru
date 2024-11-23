@@ -16,7 +16,7 @@ class AuthController extends Controller
 {
     // Регистрация
     public function register(RegisterRequest $request) {
-        // Извлечение записи роли "пользователь"
+        // Извлечение записи роли 'пользователь'
         $role_user = Role::where('code', 'user')->first();
 
         // Путь к файлу аватар
@@ -29,12 +29,10 @@ class AuthController extends Controller
 
         // Создание пользователя
         $user = User::create([
-            ...$request->validated(),
-            'avatar' => $path,
-            'role_id' => $role_user->id,
+           ...$request->validated(), 'avatar' => $path, 'role_id' => $role_user->id
         ]);
 
-        // Генерация токена
+        // Генерирация токена
         $user->api_token = Hash::make(Str::random(60));
         $user->save();
 
@@ -47,33 +45,30 @@ class AuthController extends Controller
 
     // Аутентификация
     public function login(Request $request) {
-        // Вызов исключения, если такого пользователя нет в БД
+        // Вызов исключения если такого пользователя нет в БД
         if (!Auth::attempt($request->only('email', 'password'))) {
             throw new ApiException('Unauthorized', 401);
         }
-
         // Получение информации о текущем пользователе
         $user = Auth::user();
-
         // Генерация нового токена
         $user->api_token = Hash::make(Str::random(60));
         $user->save();
-
         // Ответ
         return response()->json([
             'user' => $user,
-            'token' => $user->api_token
+            'token' => $user->api_token,
         ])->setStatusCode(200);
+
     }
 
     // Выход
     public function logout(Request $request) {
         // Получение информации о текущем пользователе
         $user = Auth::user();
-
         $user->api_token = null;
         $user->save();
-
-        return response()->json(['message' => 'Вы вышли из системы'])->setStatusCode(200);
+        return response()->json([])->setStatusCode(200);
     }
+
 }

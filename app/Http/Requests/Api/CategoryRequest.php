@@ -21,8 +21,10 @@ class CategoryRequest extends ApiRequest
     }
 
     // Кастомные сообщения об ошибках валидации
-    public function messages(): array {
+    public function messages(): array
+    {
         return [
+
             'name.required' => 'Название категории не должно быть пустым',
             'name.max' => 'Название категории не должно превышать 64 символа',
         ];

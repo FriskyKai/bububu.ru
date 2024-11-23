@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    // Указываем поля таблицы (без поля id, created_at и updated_at)
     protected $fillable = [
         'quantity',
         'price',
